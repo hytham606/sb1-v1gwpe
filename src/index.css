@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --sb-dark: 28 28 28;
+    --sb-darker: 18 18 18;
+    --sb-green: 62 207 142;
+    --sb-foreground: 248 249 250;
+  }
+
+  :root.light {
+    --sb-dark: 255 255 255;
+    --sb-darker: 249 250 251;
+    --sb-green: 62 207 142;
+    --sb-foreground: 17 24 39;
+  }
+
+  body {
+    @apply bg-sb-darker text-sb-foreground transition-colors duration-200;
+  }
+}
+
+.glass-effect {
+  @apply bg-sb-dark/80 backdrop-blur-sm border border-white/[0.04];
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-sb-green to-emerald-400 animate-gradient bg-[length:200%_auto];
+}
+
+.gradient-border {
+  @apply relative;
+}
+
+.gradient-border::after {
+  content: '';
+  @apply absolute inset-0 rounded-lg border border-white/[0.04] pointer-events-none;
+  background: linear-gradient(
+    120deg,
+    rgba(62, 207, 142, 0.1),
+    rgba(62, 207, 142, 0.05),
+    rgba(62, 207, 142, 0)
+  );
+}
